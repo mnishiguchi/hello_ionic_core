@@ -1,0 +1,20 @@
+
+/dist/
+/node_modules/
+/tmp/
+/css/
+
+# stencil
+/components/
+/css/
+/hydrate/
+/loader/
+/www/
+.stencil/
+
+# playwright
+/test-results/
+/playwright-report/
+**/*-snapshots
+
+.npmrc
