@@ -2,3 +2,50 @@
 set -e
 
 npm run build
+
+echo "==> Generating example HTML"
+
+mkdir -p dist/example
+ln -sf $(pwd)/dist/ionic-custom/* $(pwd)/dist/example
+ln -sf $(pwd)/css/core.css        $(pwd)/dist/example
+
+cat << 'EOF' > dist/example/index.html
+<!doctype html>
+<html lang="en-us">
+<head>
+  <title>Test</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script type="module" src="/ionic-custom/ionic-custom.esm.js"></script>
+  <script nomodule      src="/ionic-custom/ionic-custom.js"></script>
+  <link href="/core.css" rel="stylesheet">
+</head>
+<body data-type="page" data-kind="page" data-is-home="false">
+  <ion-app>
+    <ion-header>
+      <ion-toolbar>
+        <ion-button class="fw-normal" fill="clear" href="/">
+          <a class="h5" href="https://github.com/mnishiguchi/hello_ionic_core">
+            mnishiguchi/hello_ionic_core
+          </a>
+        </ion-button>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div style="margin-bottom: 2rem">
+        <h1 class="h1">Heading h1</h1>
+        <h2 class="h2">Heading h2</h2>
+        <h3 class="h3">Heading h3</h3>
+        <h4 class="h4">Heading h4</h4>
+        <h5 class="h5">Heading h5</h5>
+        <h6 class="h6">Heading h6</h6>
+      </div>
+      <ion-button>Hello</ion-button>
+    </ion-content>
+  </ion-app>
+</body>
+</html>
+EOF
+
+npx http-server dist -o
