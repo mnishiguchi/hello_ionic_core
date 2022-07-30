@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+echo "node "$(node --version) || echo "node is required"
+echo "npm  v"$(npm --version) || echo "npm is required"
+
+npm i
